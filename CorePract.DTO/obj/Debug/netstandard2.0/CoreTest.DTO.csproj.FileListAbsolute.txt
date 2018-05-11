@@ -1,0 +1,8 @@
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.DTO\bin\Debug\netstandard2.0\CoreTest.DTO.deps.json
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.DTO\bin\Debug\netstandard2.0\CoreTest.DTO.dll
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.DTO\bin\Debug\netstandard2.0\CoreTest.DTO.pdb
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.DTO\obj\Debug\netstandard2.0\CoreTest.DTO.csproj.CoreCompileInputs.cache
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.DTO\obj\Debug\netstandard2.0\CoreTest.DTO.AssemblyInfoInputs.cache
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.DTO\obj\Debug\netstandard2.0\CoreTest.DTO.AssemblyInfo.cs
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.DTO\obj\Debug\netstandard2.0\CoreTest.DTO.dll
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.DTO\obj\Debug\netstandard2.0\CoreTest.DTO.pdb
