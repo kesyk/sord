@@ -36,21 +36,30 @@ namespace CorePract.App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            _issuesStorage =  new IssuesStorage();
-            services.AddSingleton<IssuesStorage>(_issuesStorage);
-
-            _rmqConsumer = new RmqRestServerIssuesConsumer(_issuesStorage,_config["RabbitMq:queueProcessed"]);
-            _rmqConsumer.Consume();
-
             services.AddMvc();
             services.AddSingleton<IConfiguration>(Configuration);
+
+            _issuesStorage =  new IssuesStorage();
+            services.AddSingleton<IssuesStorage>(_issuesStorage);
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IConfiguration config)
         {
-            app.UseMvc();
+            _rmqConsumer = new RmqRestServerIssuesConsumer(
+                   _issuesStorage,
+                   config["RabbitMq:user"],
+                   config["RabbitMq:vHost"],
+                   config["RabbitMq:password"],
+                   config["RabbitMq:host"],
+                   config["RabbitMq:queueProcessed"],
+                   config["RabbitMq:exchange"],
+                   config["RabbitMq:routingKeyProcessed"]);
+
+            _rmqConsumer.Consume();
+
+            app.UseMvc();      
         }
        
 

@@ -14,12 +14,12 @@ namespace CorePract.Messaging.Consuming
 {
     public class RmqRestServerIssuesConsumer : RmqIssuesConsumer
     {
-        IssuesStorage _issuesStorage;
+        private IssuesStorage _issuesStorage;
 
-        public RmqRestServerIssuesConsumer( IssuesStorage issuesStorage, string queue ) : base( queue )
+        public RmqRestServerIssuesConsumer( IssuesStorage issuesStorage, string user, string vHost, string password, string host, string queue, string exchange, string routingKey ) : base( user, vHost, password, host, queue )
         {
+            __callback = Callback;
             _issuesStorage = issuesStorage;
-            _callback = Callback;
         }
 
         override

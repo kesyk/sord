@@ -680,6 +680,18 @@
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll": {}
         }
       },
+      "Microsoft.Extensions.Configuration/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "2.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/2.0.2": {
         "type": "package",
         "dependencies": {
@@ -2490,6 +2502,7 @@
         "dependencies": {
           "CorePract.Dto": "1.0.0",
           "CorePract.Services": "1.0.0",
+          "Microsoft.Extensions.Configuration": "2.0.2",
           "Newtonsoft.Json": "11.0.2",
           "RabbitMQ.Client": "5.0.1"
         },
@@ -2504,7 +2517,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "CorePract.Dto": "1.0.0"
+          "CorePract.Dto": "1.0.0",
+          "Microsoft.Extensions.Configuration": "2.0.2"
         },
         "compile": {
           "bin/placeholder/CorePract.Services.dll": {}
@@ -3138,6 +3152,18 @@
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml",
         "microsoft.extensions.caching.memory.2.0.2.nupkg.sha512",
         "microsoft.extensions.caching.memory.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Configuration/2.0.2": {
+      "sha512": "n5HeFXiEFONntcwVFvEGY5dnB8VRqGD20RrdB9omX6dAAUSIV/sGwGhaLV5neOt/uvhc64VDmKjIjdffC6TX5A==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration/2.0.2",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
+        "microsoft.extensions.configuration.2.0.2.nupkg.sha512",
+        "microsoft.extensions.configuration.nuspec"
       ]
     },
     "Microsoft.Extensions.Configuration.Abstractions/2.0.2": {
@@ -7454,6 +7480,7 @@
       "CorePract.Messaging >= 1.0.0",
       "CorePract.Services >= 1.0.0",
       "Microsoft.AspNetCore.Mvc >= 2.0.4",
+      "Microsoft.Extensions.Configuration >= 2.0.2",
       "NETStandard.Library >= 2.0.1",
       "RabbitMQ.Client >= 5.0.1"
     ]
@@ -7512,6 +7539,10 @@
           "Microsoft.AspNetCore.Mvc": {
             "target": "Package",
             "version": "[2.0.4, )"
+          },
+          "Microsoft.Extensions.Configuration": {
+            "target": "Package",
+            "version": "[2.0.2, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",

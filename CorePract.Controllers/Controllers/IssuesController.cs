@@ -47,7 +47,6 @@ namespace CorePract.Controllers.Controllers
                 rabbitCon.Send(
                     channel,
                     _config["RabbitMq:exchange"],
-                    _config["RabbitMq:queueNew"], 
                     _config["RabbitMq:routingKeyNew"], 
                     JsonConvert.SerializeObject(issue));
 
@@ -88,7 +87,7 @@ namespace CorePract.Controllers.Controllers
             {
                 if(_issuesStorage.isEmpty() == false)
                 { 
-                    if(_issuesStorage.GetIssueById(id)!=null)
+                    if(_issuesStorage.hasIssue(id)==false)
                     {
                        return NotFound("Заявка не найдена!");
                     }

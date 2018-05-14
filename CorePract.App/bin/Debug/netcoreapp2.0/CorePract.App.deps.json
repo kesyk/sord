@@ -16,6 +16,7 @@
           "Microsoft.AspNetCore": "2.0.3",
           "Microsoft.AspNetCore.Hosting": "2.0.3",
           "Microsoft.AspNetCore.Mvc": "2.0.4",
+          "Microsoft.Extensions.Configuration": "2.0.2",
           "RabbitMQ.Client": "5.0.1"
         },
         "runtime": {
@@ -1952,6 +1953,7 @@
           "CorePract.Messaging": "1.0.0",
           "CorePract.Services": "1.0.0",
           "Microsoft.AspNetCore.Mvc": "2.0.4",
+          "Microsoft.Extensions.Configuration": "2.0.2",
           "RabbitMQ.Client": "5.0.1"
         },
         "runtime": {
@@ -1967,6 +1969,7 @@
         "dependencies": {
           "CorePract.Dto": "1.0.0",
           "CorePract.Services": "1.0.0",
+          "Microsoft.Extensions.Configuration": "2.0.2",
           "Newtonsoft.Json": "11.0.2",
           "RabbitMQ.Client": "5.0.1"
         },
@@ -1986,7 +1989,8 @@
       },
       "CorePract.Services/1.0.0": {
         "dependencies": {
-          "CorePract.Dto": "1.0.0"
+          "CorePract.Dto": "1.0.0",
+          "Microsoft.Extensions.Configuration": "2.0.2"
         },
         "runtime": {
           "CorePract.Services.dll": {}

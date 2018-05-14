@@ -3,7 +3,7 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 
-namespace CorePract.Messaging.RabbitMQ
+namespace CorePract.RmqServer.Messaging.RabbitMQ
 {
     public class RabbitMqConnector
     {
@@ -53,8 +53,6 @@ namespace CorePract.Messaging.RabbitMQ
             channel.BasicConsume(queue: queueName,
                                  autoAck: true,
                                  consumer: consumer);
-
-           
         }
 
         public void BindExchangeAndQueue(IModel channel, string queue,string exchange, string routingKey)

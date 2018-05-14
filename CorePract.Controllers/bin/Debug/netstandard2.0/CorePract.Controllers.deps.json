@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "1015934170716e441e8af73c0869f9e0ba0bc56f"
+    "signature": "7877e6fb93d9d2af5ce3a5d24e9bee835eef8168"
   },
   "compilationOptions": {},
   "targets": {
@@ -13,6 +13,7 @@
           "CorePract.Messaging": "1.0.0",
           "CorePract.Services": "1.0.0",
           "Microsoft.AspNetCore.Mvc": "2.0.4",
+          "Microsoft.Extensions.Configuration": "2.0.2",
           "NETStandard.Library": "2.0.1",
           "RabbitMQ.Client": "5.0.1"
         },
@@ -510,6 +511,14 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration/2.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "2.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration.Abstractions/2.0.2": {
@@ -1631,6 +1640,7 @@
         "dependencies": {
           "CorePract.Dto": "1.0.0",
           "CorePract.Services": "1.0.0",
+          "Microsoft.Extensions.Configuration": "2.0.2",
           "Newtonsoft.Json": "11.0.2",
           "RabbitMQ.Client": "5.0.1"
         },
@@ -1640,7 +1650,8 @@
       },
       "CorePract.Services/1.0.0": {
         "dependencies": {
-          "CorePract.Dto": "1.0.0"
+          "CorePract.Dto": "1.0.0",
+          "Microsoft.Extensions.Configuration": "2.0.2"
         },
         "runtime": {
           "CorePract.Services.dll": {}
@@ -1982,6 +1993,13 @@
       "sha512": "sha512-tI8xks60vEmuRiXDwnRBnNWEZG5CeInh2ZyAhBelkxhNM8hDZJDw4tnyCRCeyHFh+oi7dQXMSIij67S3p5SvYg==",
       "path": "microsoft.extensions.caching.memory/2.0.2",
       "hashPath": "microsoft.extensions.caching.memory.2.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration/2.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n5HeFXiEFONntcwVFvEGY5dnB8VRqGD20RrdB9omX6dAAUSIV/sGwGhaLV5neOt/uvhc64VDmKjIjdffC6TX5A==",
+      "path": "microsoft.extensions.configuration/2.0.2",
+      "hashPath": "microsoft.extensions.configuration.2.0.2.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration.Abstractions/2.0.2": {
       "type": "package",

@@ -7,7 +7,7 @@ using CorePract.Messaging.Consuming;
 using CorePract.Dto.Enum;
 using CorePract.Services;
 
-namespace CorePract.Messaging.Consuming
+namespace CorePract.RmqServer.Messaging.Consuming
 {
     abstract public class RmqIssuesConsumer
     {
@@ -15,15 +15,15 @@ namespace CorePract.Messaging.Consuming
         protected string __queue;
         protected IModel __channel;
         protected RabbitMqConnector __rabbitCon;
-
+        
         protected string __user;
         protected string __vHost;
         protected string __password;
         protected string __host;
 
-        public abstract void Callback(string message);
+        public abstract void Callback( string message );
 
-        public RmqIssuesConsumer( string user, string vHost, string password, string host, string queue )
+        public RmqIssuesConsumer(string user, string vHost, string password, string host, string queue )
         {
             __user = user;
             __vHost = vHost;
@@ -38,15 +38,16 @@ namespace CorePract.Messaging.Consuming
         {
             try
             {
-                __rabbitCon.Connect(__user, __vHost, __password, __host);
+                __rabbitCon.Connect( __user, __vHost, __password, __host);
                 __channel = __rabbitCon.conn.CreateModel();
 
-                __rabbitCon.Receive(__channel, __queue, __callback);
+                __rabbitCon.Receive( __channel, __queue, __callback );
             }
             catch (Exception ex)
             {
                 //logging 
                 Stop();
+
             }
         }
 
@@ -56,12 +57,12 @@ namespace CorePract.Messaging.Consuming
             {
                 __rabbitCon.Disconnect();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 //logging
             }
         }
 
-
+        
     }
 }

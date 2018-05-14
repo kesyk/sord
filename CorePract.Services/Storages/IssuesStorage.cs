@@ -30,6 +30,15 @@ namespace CorePract.Services
             return false;
         }
 
+        public bool hasIssue( string id )
+        {
+            if (_issues.Any(issue => issue.IssueId == id))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public void UpdateRawIssue( ref IssueDto issue )
         {
             issue.IssueId = Guid.NewGuid().ToString();

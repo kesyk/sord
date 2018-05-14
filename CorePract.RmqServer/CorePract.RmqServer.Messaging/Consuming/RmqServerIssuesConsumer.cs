@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using System.Text;
 using RabbitMQ.Client;
-using CorePract.Messaging.RabbitMQ;
-using CorePract.Messaging.Consuming;
+using CorePract.RmqServer.Messaging.RabbitMQ;
+using CorePract.RmqServer.Messaging.Consuming;
 using CorePract.Dto.Enum;
 using CorePract.Services;
 
 using Newtonsoft.Json;
 using CorePract.Dto;
 
-namespace CorePract.Messaging.Consuming
+namespace CorePract.RmqServer.Messaging.Consuming
 {
     public class RmqServerIssuesConsumer : RmqIssuesConsumer
     {
+        private string _exchange;
+        private string _routingKey;  
 
-        public RmqServerIssuesConsumer ( string queue ) : base( queue )
+        public RmqServerIssuesConsumer ( string user, string vHost, string password, string host, string queue, string exchange, string routingKey ) : base( user, vHost, password, host, queue)
         {
-                _callback = Callback;   
+            __callback = Callback;
+            _exchange = exchange;
+            _routingKey = routingKey;   
         }
 
         override
@@ -34,17 +38,13 @@ namespace CorePract.Messaging.Consuming
                     if (issue.status == IssuesStatus.New)
                     {
                         Random rand = new Random();
-                        
+
                         Array issuesStatuses = Enum.GetValues(typeof(IssuesStatus));
-                        issue.status = (IssuesStatus)issuesStatuses.GetValue(rand.Next(1,Enum.GetValues(typeof(IssuesStatus)).Length));
+                        issue.status = (IssuesStatus)issuesStatuses.GetValue(rand.Next(1, Enum.GetValues(typeof(IssuesStatus)).Length));
 
-                        var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(issue));
-
-                        _channel.BasicPublish(exchange: _config["RabbitMq:exchange"],
-                                             routingKey: _config["RabbitMq:routingKeyProcessed"],
-                                             basicProperties: null,
-                                             body: body);
+                        __rabbitCon.Send(__channel, _exchange, _routingKey, JsonConvert.SerializeObject(issue));
                     }
+                          
                 }
             }
             catch (Exception ex)
