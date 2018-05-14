@@ -3,105 +3,104 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using CorePract.Controllers.Validators;
-using CoreTest.DTO;
-using System.Net;
+using CorePract.Dto;
+using CorePract.Messaging.RabbitMQ;
+using CorePract.Services;
+using RabbitMQ.Client;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 namespace CorePract.Controllers.Controllers
 {
     [Route("api/v1/[controller]")]
     public class IssuesController : Controller
     {
-        private static List<IssueDto> _issues;
         private static RegIssueParamsValidator _paramsValidator;
+        private IConfiguration _config;
+        private readonly IssuesStorage _issuesStorage;
+
+        public IssuesController (IssuesStorage issuesStorage, IConfiguration Configuration)
+        {
+            _issuesStorage = issuesStorage;
+            _config = Configuration;
+        }
 
         [HttpPost("reg")]
-        public string Registration( [FromBody]  IssueDto issue )
+        public ActionResult Registration( [FromBody]  IssueDto issue )
         {
             try
             {
                 if (_paramsValidator == null) { _paramsValidator = new RegIssueParamsValidator(); }
-                _paramsValidator.ValidateQueryParams(issue);
+                if(_paramsValidator.ValidateQueryParams(issue)==false)
+                {
+                    BadRequest("Некорректные параметры");
+                }
 
-                if (_issues == null) { _issues = new List<IssueDto>(); }
-                _issues.Add(issue);
+                _issuesStorage.UpdateRawIssue(ref issue);
+                _issuesStorage.Insert(issue);
 
-                return issue.IdIssue;
+                RabbitMqConnector rabbitCon = new RabbitMqConnector();
+                rabbitCon.Connect(_config["RabbitMq:user"], _config["RabbitMq:vHost"], _config["RabbitMq:password"], _config["RabbitMq:host"]);
+
+                IModel channel = rabbitCon.conn.CreateModel();
+
+                rabbitCon.Send(
+                    channel,
+                    _config["RabbitMq:exchange"],
+                    _config["RabbitMq:queueNew"], 
+                    _config["RabbitMq:routingKeyNew"], 
+                    JsonConvert.SerializeObject(issue));
+
+                rabbitCon.Disconnect();
+
+                return Ok(issue.IssueId);
             }
             catch (Exception ex)
             {
-                if(ex.GetType()==typeof(ArgumentException))
-                {
-                    Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                }
-                else
-                {
-                    Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                }
-
-                return ex.Message;
+                return StatusCode(500, ex.Message);
             }
 
         }
 
         [HttpGet]
-        public string ShowAllIssues()
+        public ActionResult ShowAllIssues()
         {
             try
             {
-                string output = "";
-
-                if(_issues == null)
+                if(_issuesStorage.isEmpty() == false)
                 {
-                    output = "Заявок нет";
-                }
-                else
-                {
-                    _issues
-                        .ForEach((issue) => 
-                        {
-                            output = output + JsonConvert.SerializeObject(issue) + "\n";
-                        });
+                    return Ok(_issuesStorage.GetIssues());
                 }
 
-                return output;
+                return NotFound("Заявок нет");
             }
             catch (Exception ex)
             {
-                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                return ex.Message;
+                return StatusCode(500,ex.Message);
             }
 
         }
 
         [HttpGet("{id}")]
-        public string ShowIssueById(string id)
+        public ActionResult ShowIssueById(string id)
         {
             try
             {
-                string output = "";
-
-                if(_issues == null)
-                {
-                    output = "Не удалось найти заявку";
-                }
-                else
-                {
-                    _issues
-                        .Where(issue => issue.IdIssue.Equals(id))
-                        .ToList()
-                        .ForEach(issue =>
-                        {
-                            output = output + JsonConvert.SerializeObject(issue) + "\n";
-                        });
+                if(_issuesStorage.isEmpty() == false)
+                { 
+                    if(_issuesStorage.GetIssueById(id)!=null)
+                    {
+                       return NotFound("Заявка не найдена!");
+                    }
+                    return Ok(_issuesStorage.GetIssueById(id));
                 }
 
-                return output;
+                return NotFound("Заявок нет");
+                
             }
             catch (Exception ex)
             {
-                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                return ex.Message;
+                return StatusCode(500,ex.Message);
             }
 
         }

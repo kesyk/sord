@@ -28,3 +28,7 @@ C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CorePract\CorePract.Contr
 C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CorePract\CorePract.Controllers\obj\Debug\netstandard2.0\CorePract.Controllers.csproj.CopyComplete
 C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CorePract\CorePract.Controllers\obj\Debug\netstandard2.0\CorePract.Controllers.dll
 C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CorePract\CorePract.Controllers\obj\Debug\netstandard2.0\CorePract.Controllers.pdb
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CorePract\CorePract.Controllers\bin\Debug\netstandard2.0\CorePract.Messaging.dll
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CorePract\CorePract.Controllers\bin\Debug\netstandard2.0\CorePract.Messaging.pdb
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CorePract\CorePract.Controllers\bin\Debug\netstandard2.0\CorePract.Services.dll
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CorePract\CorePract.Controllers\bin\Debug\netstandard2.0\CorePract.Services.pdb

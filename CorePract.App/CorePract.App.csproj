@@ -9,11 +9,15 @@
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.4" />
+    <PackageReference Include="RabbitMQ.Client" Version="5.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CorePract.Controllers\CorePract.Controllers.csproj" />
     <ProjectReference Include="..\CorePract.DTO\CorePract.Dto.csproj" />
+    <ProjectReference Include="..\CorePract.Messaging\CorePract.Messaging.csproj" />
+    <ProjectReference Include="..\CorePract.RmqServer\CorePract.RmqServer.csproj" />
+    <ProjectReference Include="..\CorePract.Services\CorePract.Services.csproj" />
   </ItemGroup>
 
 </Project>
