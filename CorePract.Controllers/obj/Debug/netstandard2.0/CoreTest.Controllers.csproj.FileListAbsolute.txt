@@ -1,0 +1,9 @@
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.Controllers\bin\Debug\netstandard2.0\CoreTest.Controllers.deps.json
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.Controllers\bin\Debug\netstandard2.0\CoreTest.Controllers.dll
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.Controllers\bin\Debug\netstandard2.0\CoreTest.Controllers.pdb
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.Controllers\obj\Debug\netstandard2.0\CoreTest.Controllers.csprojAssemblyReference.cache
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.Controllers\obj\Debug\netstandard2.0\CoreTest.Controllers.csproj.CoreCompileInputs.cache
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.Controllers\obj\Debug\netstandard2.0\CoreTest.Controllers.AssemblyInfoInputs.cache
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.Controllers\obj\Debug\netstandard2.0\CoreTest.Controllers.AssemblyInfo.cs
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.Controllers\obj\Debug\netstandard2.0\CoreTest.Controllers.dll
+C:\Users\MaxPain\Documents\Visual Studio 2017\Projects\CoreTest\CoreTest.Controllers\obj\Debug\netstandard2.0\CoreTest.Controllers.pdb
