@@ -42,6 +42,8 @@ namespace CorePract.App
             _issuesStorage =  new IssuesStorage();
             services.AddSingleton<IssuesStorage>(_issuesStorage);
 
+            services.AddSingleton<RegIssueParamsValidator>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

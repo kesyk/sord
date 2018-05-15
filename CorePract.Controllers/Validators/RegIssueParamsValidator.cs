@@ -9,17 +9,17 @@ namespace CorePract.Controllers.Validators
     {
         public RegIssueParamsValidator() { }
 
-        public bool ValidateQueryParams( IssueDto issue )
+        public bool ValidateQueryParams( IssueRawDto issue )
         {
             try
             {
-                if (RequiredStringValueIsEmpty(issue.IssueId) ||
-                                RequiredStringValueIsEmpty(issue.ReceiverId) ||
-                                issue.Sum < 0 ||
-                                RequiredStringValueIsEmpty(issue.Instrument))
-                    return true;
-
-                return false;
+                if (RequiredStringValueIsEmpty(issue.ReceiverId) ||
+                    RequiredStringValueIsEmpty(issue.SenderId) ||
+                    issue.Sum < 0 ||
+                    RequiredStringValueIsEmpty(issue.Instrument))
+                    return false;
+          
+                return true;
             }
             catch(Exception)
             {

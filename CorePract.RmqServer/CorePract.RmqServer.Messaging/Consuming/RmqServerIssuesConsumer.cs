@@ -19,7 +19,6 @@ namespace CorePract.RmqServer.Messaging.Consuming
 
         public RmqServerIssuesConsumer ( string user, string vHost, string password, string host, string queue, string exchange, string routingKey ) : base( user, vHost, password, host, queue)
         {
-            __callback = Callback;
             _exchange = exchange;
             _routingKey = routingKey;   
         }

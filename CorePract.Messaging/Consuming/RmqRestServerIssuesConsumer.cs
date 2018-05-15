@@ -18,7 +18,6 @@ namespace CorePract.Messaging.Consuming
 
         public RmqRestServerIssuesConsumer( IssuesStorage issuesStorage, string user, string vHost, string password, string host, string queue, string exchange, string routingKey ) : base( user, vHost, password, host, queue )
         {
-            __callback = Callback;
             _issuesStorage = issuesStorage;
         }
 

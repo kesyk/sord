@@ -41,7 +41,7 @@ namespace CorePract.Messaging.Consuming
                 __rabbitCon.Connect(__user, __vHost, __password, __host);
                 __channel = __rabbitCon.conn.CreateModel();
 
-                __rabbitCon.Receive(__channel, __queue, __callback);
+                __rabbitCon.Receive(__channel, __queue, Callback);
             }
             catch (Exception ex)
             {

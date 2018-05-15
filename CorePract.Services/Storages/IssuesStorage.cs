@@ -32,17 +32,21 @@ namespace CorePract.Services
 
         public bool hasIssue( string id )
         {
-            if (_issues.Any(issue => issue.IssueId == id))
-            {
-                return true;
-            }
-            return false;
+            return _issues.Any(issue => issue.IssueId == id);
         }
 
-        public void UpdateRawIssue( ref IssueDto issue )
+        public IssueDto CreateIssue( IssueRawDto issueRaw )
         {
+            IssueDto issue = new IssueDto();
+
             issue.IssueId = Guid.NewGuid().ToString();
             issue.status = IssuesStatus.New;
+
+            issue.Sum = issueRaw.Sum;
+            issue.SenderId = issueRaw.SenderId;
+            issue.ReceiverId = issueRaw.ReceiverId;
+
+            return issue;
         }
 
         public void UpdateStatus( string id , IssuesStatus newStatus )
@@ -53,7 +57,10 @@ namespace CorePract.Services
 
         public void Insert(IssueDto issue)
         {
-            _issues.Add(issue);
+            if(!hasIssue(issue.IssueId))
+            {
+                _issues.Add(issue);
+            }
         }
 
         public IssueDto GetIssueById(string id)
